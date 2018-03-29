@@ -1,0 +1,494 @@
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import javafx.application.Application;
+import javafx.beans.binding.Bindings;
+import javafx.beans.property.DoubleProperty;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Border;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.scene.media.MediaView;
+import javafx.stage.Stage;
+
+public class JavaFxProject extends Application {
+	public static void main(String[] args) {
+		launch(args);
+	}
+  	//Variables for the game
+  	int cardnum = 0,cardnum2 = 0,cardsclicked = 0,score = 0;
+
+	public void cards1(){
+  		cardnum = 1;
+  	}
+	public void cards2() {
+		cardnum = 2;
+	}
+	public void cards3() {
+		cardnum = 3;
+	}
+	public void cards4() {
+		cardnum = 4;
+	}
+	public void cards12() {
+		cardnum2 = 1;
+	}
+	public void cards22() {
+		cardnum2 = 2;
+	}
+	public void cards32() {
+		cardnum2 = 3;
+	}
+	public void cards42() {
+		cardnum2 = 4;
+	}
+	public void cardclicked() {
+		cardsclicked++;
+	}
+	@Override
+	public void start(Stage primaryStage) throws FileNotFoundException{
+		
+		//Create Scene and Window
+		Stage window = primaryStage;
+		Scene home_view, author,author2,game;
+		
+		//Creates Grid Pane scenes 
+		GridPane grid = new GridPane();
+		grid.setHgap(2);
+		grid.setVgap(2);
+		grid.setPadding(new Insets(10, 10, 10, 10));
+	
+  		GridPane grid2 = new GridPane();
+  		grid2.setHgap(2);
+  		grid2.setVgap(2);
+  		grid2.setPadding(new Insets(10, 10, 10, 10));
+  		
+  		GridPane grid3 = new GridPane();
+  		grid3.setHgap(2);
+  		grid3.setVgap(2);
+  		grid3.setPadding(new Insets(10, 10, 10, 10));
+  		
+  		GridPane grid4 = new GridPane();
+  		grid4.setHgap(2);
+  		grid4.setVgap(2);
+  		grid4.setPadding(new Insets(10, 10, 10, 10));
+		
+		
+		//create Scenes
+		home_view = new Scene(grid,1920,1080);
+		author = new Scene(grid2,1920,1080);
+  		author2 = new Scene(grid4,1920,1080);
+  		game = new Scene(grid3,1920,1080);
+		
+		//Four Buttons created and will always bee on scene to choose which scene to go to
+		Button bOne = new Button("Home View");
+		bOne.setOnAction(e -> window.setScene(home_view));
+		Button bTwo = new Button("Author");
+		bTwo.setOnAction(e -> window.setScene(author));
+		Button bThree = new Button("Game");
+		bThree.setOnAction(e -> window.setScene(game));
+		Button bFour = new Button("Author2");
+		bFour.setOnAction(e -> window.setScene(author2));
+		GridPane.setConstraints(bOne, 0, 0);
+		GridPane.setConstraints(bTwo, 1, 0);
+		GridPane.setConstraints(bThree, 2, 0);
+		GridPane.setConstraints(bFour, 3,0);
+		grid.getChildren().addAll(bOne,bTwo,bThree,bFour);
+		
+		Button bOne2 = new Button("Home View");
+		bOne2.setOnAction(e -> window.setScene(home_view));
+		Button bTwo2 = new Button("Author");
+		bTwo2.setOnAction(e -> window.setScene(author));
+		Button bThree2 = new Button("Game");
+		bThree2.setOnAction(e -> window.setScene(game));
+		Button bFour2 = new Button("Author2");
+		bFour2.setOnAction(e -> window.setScene(author2));
+		GridPane.setConstraints(bOne2, 0, 0);
+		GridPane.setConstraints(bTwo2, 1, 0);
+		GridPane.setConstraints(bThree2, 2, 0);
+		GridPane.setConstraints(bFour2, 3,0);
+		grid2.getChildren().addAll(bOne2,bTwo2,bThree2,bFour2);
+
+		Button bOne3 = new Button("Home View");
+		bOne3.setOnAction(e -> window.setScene(home_view));
+		Button bTwo3 = new Button("Author");
+		bTwo3.setOnAction(e -> window.setScene(author));
+		Button bThree3 = new Button("Game");
+		bThree3.setOnAction(e -> window.setScene(game));
+		Button bFour3 = new Button("Author2");
+		bFour3.setOnAction(e -> window.setScene(author2));
+		GridPane.setConstraints(bOne3, 0, 0);
+		GridPane.setConstraints(bTwo3, 1, 0);
+		GridPane.setConstraints(bThree3, 2, 0);
+		GridPane.setConstraints(bFour3, 3,0);
+		grid4.getChildren().addAll(bOne3,bTwo3,bThree3,bFour3);
+		
+		Button bOne4 = new Button("Home View");
+		bOne4.setOnAction(e -> window.setScene(home_view));
+		Button bTwo4 = new Button("Author");
+		bTwo4.setOnAction(e -> window.setScene(author));
+		Button bThree4 = new Button("Game");
+		bThree4.setOnAction(e -> window.setScene(game));
+		Button bFour4 = new Button("Author2");
+		bFour4.setOnAction(e -> window.setScene(author2));
+		GridPane.setConstraints(bOne4, 0, 0);
+		GridPane.setConstraints(bTwo4, 1, 0);
+		GridPane.setConstraints(bThree4, 2, 0);
+		GridPane.setConstraints(bFour4, 3,0);
+		grid3.getChildren().addAll(bOne4,bTwo4,bThree4,bFour4);
+		
+		//Welcome Message
+	    Image image = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\welcome.gif")); 
+	    ImageView imageView = new ImageView(image);
+	    GridPane.setConstraints(imageView, 5, 2);
+	    grid.getChildren().add(imageView);
+		
+
+		
+		//Video Player2
+		MediaPlayer player = new MediaPlayer( new Media(getClass().getResource("author video 20180322_185456_1.mp4").toExternalForm()));
+	    MediaView mediaView = new MediaView(player);
+	    GridPane.setConstraints(mediaView, 5,1);
+	    grid2.getChildren().add(mediaView);
+		
+	    //Image of me2
+	    Image image2 = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\juan pic.jpg")); 
+	    ImageView imageView2 = new ImageView(image2);
+	    GridPane.setConstraints(imageView2, 5, 2);
+	    grid2.getChildren().add(imageView2);
+	    
+	    //Info2
+	    Label myinfo2 = new Label("My name is Juan I'm a Computer Science Major ; 3rd year in college, hobbies include jogging and lifting");
+	    GridPane.setConstraints(myinfo2, 5, 10);
+	    grid2.getChildren().add(myinfo2);
+	  		
+	  	//Video Player
+	  	MediaPlayer player2 = new MediaPlayer( new Media(getClass().getResource("VID_20180322_185321198 (2).mp4").toExternalForm()));
+	  	MediaView mediaView2 = new MediaView(player);
+	  	GridPane.setConstraints(mediaView2, 5,1);
+	  	grid4.getChildren().add(mediaView2);
+	  		
+	  	//Image of me
+	  	Image image3 = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\IMG_20171010_144016864_HDR.jpg")); 
+	  	ImageView imageView3 = new ImageView(image3);
+	  	GridPane.setConstraints(imageView3, 5, 2);
+	  	grid4.getChildren().add(imageView3);
+	  	    
+	  	//Info
+	  	Label myinfo = new Label("Hi my name is Tyler. I am a freshman at Kennesaw University and I love to work on cars and Computers. I spend most of my time either working or trying to find something to eat");
+	  	GridPane.setConstraints(myinfo, 5, 10);
+	  	grid4.getChildren().add(myinfo);	  	    
+	    
+	  	//game
+	  	//Card images
+	  	Image cardback = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\Card Back.jpg"));
+	  	Image cardback1 = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\Card Back.jpg"));
+	  	Image cardback2 = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\Card Back.jpg"));
+	  	Image cardback3 = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\Card Back.jpg"));
+	  	Image cardback4 = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\Card Back.jpg"));
+	  	Image cardback5 = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\Card Back.jpg"));
+	  	Image cardback6 = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\Card Back.jpg"));
+	  	Image cardback7 = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\Card Back.jpg"));
+	  	Image card1 = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\Card 1.jpg"));
+	  	Image card2 = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\Card 2.jpg"));
+	  	Image card3 = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\Card 3.jpg"));
+	  	Image card4 = new Image(new FileInputStream("C:\\Users\\tyler\\eclipse-workspace\\JavaFxProject\\bin\\Card 4.jpg"));
+	  	ImageView cardview = new ImageView(cardback);
+	  	GridPane.setConstraints(cardview, 5,1);
+	  	ImageView cardview1 = new ImageView(cardback1);
+	  	GridPane.setConstraints(cardview1, 6,1);
+	  	ImageView cardview2 = new ImageView(cardback2);
+	  	GridPane.setConstraints(cardview2, 7,1);
+	  	ImageView cardview3 = new ImageView(cardback3);
+	  	GridPane.setConstraints(cardview3, 8,1);
+	  	ImageView cardview4 = new ImageView(cardback4);
+	  	GridPane.setConstraints(cardview4, 5,2);
+	  	ImageView cardview5 = new ImageView(cardback5);
+	  	GridPane.setConstraints(cardview5, 6,2);
+	  	ImageView cardview6 = new ImageView(cardback6);
+	  	GridPane.setConstraints(cardview6, 7,2);
+	  	ImageView cardview7 = new ImageView(cardback7);
+	  	GridPane.setConstraints(cardview7, 8,2);
+	  	ImageView card1view = new ImageView(card1);
+	  	GridPane.setConstraints(card1view, 5,1);
+	  	ImageView card1view2 = new ImageView(card1);
+	  	GridPane.setConstraints(card1view2, 8,2);
+	  	ImageView card2view = new ImageView(card2);
+	  	GridPane.setConstraints(card2view, 5,2);
+	  	ImageView card2view2 = new ImageView(card2);
+	  	GridPane.setConstraints(card2view2, 6,1);
+	  	ImageView card3view = new ImageView(card3);
+	  	GridPane.setConstraints(card3view, 7,1);
+	  	ImageView card3view2 = new ImageView(card3);
+	  	GridPane.setConstraints(card3view2, 6,2);
+	  	ImageView card4view = new ImageView(card4);
+	  	GridPane.setConstraints(card4view, 7,2);
+	  	ImageView card4view2 = new ImageView(card4);
+	  	GridPane.setConstraints(card4view2, 8,1);
+	  	
+	  	//Variables for the game
+	  	int cardnum = 0,cardnum2 = 0,cardsclicked = 0;
+
+	  	
+	  	
+	  	//Buttons for interaction
+	  	Button sel1 = new Button("");
+	  	GridPane.setConstraints(sel1, 5,1);
+	  	Button sel2 = new Button("");
+	  	GridPane.setConstraints(sel2, 6,1);
+	  	Button sel3 = new Button("");
+	  	GridPane.setConstraints(sel3, 7,1);
+	  	Button sel4 = new Button("");
+	  	GridPane.setConstraints(sel4, 8,1);
+	  	Button sel5 = new Button("");
+	  	GridPane.setConstraints(sel5, 5,2);
+	  	Button sel6 = new Button("");
+	  	GridPane.setConstraints(sel6, 6,2);
+	  	Button sel7 = new Button("");
+	  	GridPane.setConstraints(sel7, 7,2);
+	  	Button sel8 = new Button("");
+	  	GridPane.setConstraints(sel8, 8,2);
+
+	  	
+	  	
+	  	//Set Up Cards on screen
+	  	grid3.getChildren().add(cardview1);
+	  	grid3.getChildren().add(sel1);
+	  	grid3.getChildren().add(cardview2);
+	  	grid3.getChildren().add(sel2);
+	  	grid3.getChildren().add(cardview3);
+	  	grid3.getChildren().add(sel3);
+	  	grid3.getChildren().add(cardview4);
+	  	grid3.getChildren().add(sel4);
+	  	grid3.getChildren().add(cardview5);
+	  	grid3.getChildren().add(sel5);
+	  	grid3.getChildren().add(cardview6);
+	  	grid3.getChildren().add(sel6);
+	  	grid3.getChildren().add(cardview7);
+	  	grid3.getChildren().add(sel7);
+	  	grid3.getChildren().add(cardview);
+	  	grid3.getChildren().add(sel8);
+	  	
+	  	//Actions in game
+	  	sel1.setOnAction(e -> grid3.getChildren().add(card1view));
+	  	if(cardsclicked <= 1) {
+	  	sel1.setOnAction((ActionEvent event)->{
+	  		cards1();
+	  		cardclicked();
+	  	});
+	  	}
+	  	else {
+	  		sel1.setOnAction((ActionEvent event)->{
+		  		cards12();
+	  	});
+	  		if(cardnum ==cardnum2) {
+	  			score+=100;
+	  			grid3.getChildren().remove(card1view);
+	  			grid3.getChildren().remove(card1view2);
+	  			grid3.getChildren().remove(sel1);
+	  			grid3.getChildren().remove(sel8);
+	  			cardsclicked = 0;
+	  		}
+	  		else {
+	  			grid3.getChildren().remove(card1view);
+	  			grid3.getChildren().remove(card1view2);
+	  			cardsclicked = 0;
+	  		}
+	  	};
+	  	sel2.setOnAction(e -> grid3.getChildren().add(card2view2));
+	  	if(cardsclicked <= 1) {
+	  	sel1.setOnAction((ActionEvent event)->{
+	  		cards2();
+	  		cardclicked();
+	  	});
+	  	}
+	  	else {
+	  		sel1.setOnAction((ActionEvent event)->{
+		  		cards22();
+	  	});
+	  		if(cardnum ==cardnum2) {
+	  			score+=100;
+	  			grid3.getChildren().remove(card2view);
+	  			grid3.getChildren().remove(card2view2);
+	  			grid3.getChildren().remove(sel2);
+	  			grid3.getChildren().remove(sel5);
+	  			cardsclicked = 0;
+	  		}
+	  		else {
+	  			grid3.getChildren().remove(card2view);
+	  			grid3.getChildren().remove(card2view2);
+	  			cardsclicked = 0;
+	  		}
+	  	};
+	  	sel3.setOnAction(e -> grid3.getChildren().add(card3view));
+	  	if(cardsclicked <= 1) {
+	  	sel1.setOnAction((ActionEvent event)->{
+	  		cards3();
+	  		cardclicked();
+	  	});
+	  	}
+	  	else {
+	  		sel1.setOnAction((ActionEvent event)->{
+		  		cards32();
+	  	});
+	  		if(cardnum ==cardnum2) {
+	  			score+=100;
+	  			grid3.getChildren().remove(card3view);
+	  			grid3.getChildren().remove(card3view2);
+	  			grid3.getChildren().remove(sel3);
+	  			grid3.getChildren().remove(sel6);
+	  			cardsclicked = 0;
+	  		}
+	  		else {
+	  			grid3.getChildren().remove(card3view);
+	  			grid3.getChildren().remove(card3view2);
+	  			cardsclicked = 0;
+	  		}
+	  	};
+	  	sel4.setOnAction(e -> grid3.getChildren().add(card4view2));
+	  	if(cardsclicked <= 1) {
+	  	sel1.setOnAction((ActionEvent event)->{
+	  		cards4();
+	  		cardclicked();
+	  	});
+	  	}
+	  	else {
+	  		sel1.setOnAction((ActionEvent event)->{
+		  		cards42();
+	  	});
+	  		if(cardnum ==cardnum2) {
+	  			score+=100;
+	  			grid3.getChildren().remove(card4view);
+	  			grid3.getChildren().remove(card4view2);
+	  			grid3.getChildren().remove(sel4);
+	  			grid3.getChildren().remove(sel7);
+	  			cardsclicked = 0;
+	  		}
+	  		else {
+	  			grid3.getChildren().remove(card4view);
+	  			grid3.getChildren().remove(card4view2);
+	  			cardsclicked = 0;
+	  		}
+	  	};
+	  	sel5.setOnAction(e -> grid3.getChildren().add(card2view));
+	  	if(cardsclicked <= 1) {
+	  	sel1.setOnAction((ActionEvent event)->{
+	  		cards2();
+	  		cardclicked();
+	  	});
+	  	}
+	  	else {
+	  		sel1.setOnAction((ActionEvent event)->{
+		  		cards22();
+	  	});
+	  		if(cardnum ==cardnum2) {
+	  			score+=100;
+	  			grid3.getChildren().remove(card2view);
+	  			grid3.getChildren().remove(card2view2);
+	  			grid3.getChildren().remove(sel2);
+	  			grid3.getChildren().remove(sel5);
+	  			cardsclicked = 0;
+	  		}
+	  		else {
+	  			grid3.getChildren().remove(card2view);
+	  			grid3.getChildren().remove(card2view2);
+	  			cardsclicked = 0;
+	  		}
+	  	};
+	  	sel6.setOnAction(e -> grid3.getChildren().add(card3view2));
+	  	if(cardsclicked <= 1) {
+	  	sel1.setOnAction((ActionEvent event)->{
+	  		cards3();
+	  		cardclicked();
+	  	});
+	  	}
+	  	else {
+	  		sel1.setOnAction((ActionEvent event)->{
+		  		cards32();
+	  	});
+	  		if(cardnum ==cardnum2) {
+	  			score+=100;
+	  			grid3.getChildren().remove(card3view);
+	  			grid3.getChildren().remove(card3view2);
+	  			grid3.getChildren().remove(sel3);
+	  			grid3.getChildren().remove(sel6);
+	  			cardsclicked = 0;
+	  		}
+	  		else {
+	  			grid3.getChildren().remove(card3view);
+	  			grid3.getChildren().remove(card3view2);
+	  			cardsclicked = 0;
+	  		}
+	  	};	  	
+	  	sel7.setOnAction(e -> grid3.getChildren().add(card4view));
+	  	if(cardsclicked <= 1) {
+	  	sel1.setOnAction((ActionEvent event)->{
+	  		cards4();
+	  		cardclicked();
+	  	});
+	  	}
+	  	else {
+	  		sel1.setOnAction((ActionEvent event)->{
+		  		cards42();
+	  	});
+	  		if(cardnum ==cardnum2) {
+	  			score+=100;
+	  			grid3.getChildren().remove(card4view);
+	  			grid3.getChildren().remove(card4view2);
+	  			grid3.getChildren().remove(sel4);
+	  			grid3.getChildren().remove(sel7);
+	  			cardsclicked = 0;
+	  		}
+	  		else {
+	  			grid3.getChildren().remove(card4view);
+	  			grid3.getChildren().remove(card4view2);
+	  			cardsclicked = 0;
+	  		}
+	  	};
+	  	sel8.setOnAction(e -> grid3.getChildren().add(card1view2));
+	  	if(cardsclicked <= 1) {
+	  	sel1.setOnAction((ActionEvent event)->{
+	  		cards1();
+	  		cardclicked();
+	  	});
+	  	}
+	  	else {
+	  		sel1.setOnAction((ActionEvent event)->{
+		  		cards12();
+	  	});
+	  		if(cardnum ==cardnum2) {
+	  			score+=100;
+	  			grid3.getChildren().remove(card1view);
+	  			grid3.getChildren().remove(card1view2);
+	  			grid3.getChildren().remove(sel1);
+	  			grid3.getChildren().remove(sel8);
+	  			cardsclicked = 0;
+	  		}
+	  		else {
+	  			grid3.getChildren().remove(card1view);
+	  			grid3.getChildren().remove(card1view2);
+	  			cardsclicked = 0;
+	  		}
+	  	};
+	  	Label thescore = new Label("The Score is "+ score);
+	  	GridPane.setConstraints(thescore, 5, 3);
+	  	grid3.getChildren().add(thescore);
+	  	
+	  	
+	  	//Display
+	  	primaryStage.setTitle("Java Project");
+		window.setScene(home_view);
+		window.show();
+		
+	}	
+	}
